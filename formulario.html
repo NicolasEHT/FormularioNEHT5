@@ -1,0 +1,157 @@
+<html>
+<head>
+	<title>Curriculum Vitae</title>
+	<script type="text/javascript" src="jquery-1.12.4.min.js"></script>
+</head>
+<body>
+	<center>
+		<h1>Curriculum Vitae</h1><br>
+	<b><small>Information record</small></b></center><br>
+	<table width="100%">
+	<tr bgcolor="#FFB732">
+		<th colspan="2">1.- Personal Info</th>
+	</tr>
+	<tr>
+	<td align="right"><label>First Name: </label></td>
+	<td><input type="text" name="first_name" id="first_name" placeholder="Enter your first name" title="Enter your first
+	name" required="required" size="50"><small><br>Please, enter your first name here</small></td>
+	</tr>
+	<td align="right"><label>Last Name: </label></td>
+	<td><input type="text" name="last_name" id="last_name" placeholder="Enter your last name" title="Enter your last name"
+	required="required" size="50"><small><br>Please, enter your last name here</small></td>
+	</tr>
+	<tr>
+		<td align="right"><label>DNI: </label></td>
+		<td>
+			<select name="nationality" id="nationality" title="Select your nationality">
+				<option value="V" title="Venezolano/a">V</option>
+				<option value="E" title="Extranjero/a">E</option>
+				<option value="J" title="Juridico/a">J</option>
+				<option value="G" title="Gubernamental">G</option>
+				</select>
+			<input type="number" name="dni" id="dni" placeholder="Enter your DNI" title="Enter your DNI"
+			required="required" size="50"><br><small>Please, enter your DNI here</small>
+		</td>
+	</tr>
+	<tr>
+		<td align="right"><label>Phone Number: </label></td>
+		<td><input type="text" name="phone_number" id="phone_number" placeholder="Enter your phone number" title="Enter your phone
+		number" required="required" size="50"><br><small>Please, enter your phone number here</small><small><br>Specify your country code</small></td>
+	</tr>
+	<tr>
+		<td align="right"><label>Email Adress: </label></td>
+		<td><input type="email" name="email_adress" id="email_adress" placeholder="Enter your email adresss" title="Enter your
+		email adress" required="required" size="50"><small><br>Please, enter your email adress here</small></td>
+	</tr>
+	<tr>
+		<td align="right"><label>Marital Status</label>
+		<td><input type="radio" name="marital_status" id="Married" title="Select your marital status" value="Married" checked=
+		"checked"
+			option value="M"></option>Married
+		<input type="radio" name="marital_status" id="Single" title="Select your marital status" value="Single"
+			option value="S"></option>Single
+		<input type="radio" name="marital_status" id="Widowed" title="Select your marital status" value="Widowed"
+			option value="W"></option>Widowed
+		<input type="radio" name="marital_status" id="Divorced" title="Select your marital status" value="Divorced"
+			option value="D"></option>Divorced</td>
+	</tr>
+	<tr>
+		<td  align="right"><label>Date of birth: </label></td>
+		<td><input type="text" name="date_of_birth" id="date_of_birth" placeholder="MM/DD/YYYY" title="Enter your date of birth" required="required" size="50"><br><small>Please, enter your date of birth here</small></td>
+	</tr>
+	<tr>
+		<td align="right"><label>Gender: </label></td>
+		<td><select name="gender" id="gender" title="Select your gender">
+			<option value="Male"  title="Male">Male</option>
+			<option value="Female" title="Female">Female</option>
+			<option value="Prefer not to say" title="Prefer not to say">Prefer not to say</option>
+		</select>
+	</td>
+	<tr>
+		<td align="right"><label>Adress: </label></td>
+		<td><input type="text" name="adress" id="adress" placeholder="Write your adress" title="Write your adress" required="required" size="50"><br><small>Please, write your adress here</small></td>
+	</tr>
+	<tr  bgcolor="#FFB732">
+		<th colspan="2">2. Studies and Skills</th>
+	</tr>
+	<tr>
+		<td align="right"><label>Studies: </label></td>
+		<td><input type="text" name="Studies" id="studies" placeholder="Enter your applied studies" title="Enter your applied studies" required="required" size="50">&nbsp;<input type="button" name="add1" id="add1" value="Add"><br><small>Please, enter your applied studies here</small></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<table  id="table1">
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td align="right"><label>Skills: </label></td>
+		<td><input type="text" name="skills" id="Skills" placeholder="Enter in which programming language you're skilled in"  required="required" size="50">&nbsp;<input type="button" name="add2" id="add2" value="Add"><br><small>Please, enter your programming language skills here</small></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<table  id="table2">
+			</table>
+		</td>
+	</tr>
+	<tr bgcolor="#FFB732">
+		<th colspan="2">3. Laboral Experience</th>
+	</tr>
+	<tr>
+		<td align="right"><label>Past Jobs:  </label></td>
+		<td><input type="text" name="past_jobs" id="past_jobs" placeholder="Write your past jobs here" title="Write your past jobs here" required="required" size="50">&nbsp;<input type="button" name="add3" id="add3" value="Add"><br><small>Please, write your past jobs here</small></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<table id="table3">
+		</td>
+	</tr>
+	</table>
+</body>
+</html>
+
+<script type="text/javascript">
+	var i=1;
+	$("#add1").on('click',function(event){
+		$("#table1").append('<tr id="f1'+i+'"><td align="right"></td><td><input type="text" name="Studies" id="studies" placeholder="Enter your applied studies" title="Enter your applied studies" required="required" size="50"><input type="button" name="remove1" value="Remove" onclick="removefield('+i+')"></td></tr>');
+		i++;
+});
+	function removefield(i){
+		var nombre_f1="#f1";
+		var num="";
+		var num_f1=i;
+		num=num_f1.toString();
+		var f1=nombre_f1.concat(num);
+		$(""+f1+"").empty();
+	};
+
+	var i=1;
+	$("#add2").on('click',function(event){
+		$("#table2").append('<tr id="f2'+i+'"><td align="right"></td><td><input type="text" name="skills" id="Skills" placeholder="Enter in which programming language you are skilled in"  required="required" size="50"><input type="button" name="remove2" id="remove2" value="Remove" onclick="removefield2('+i+')"></td></tr>');
+		i++;
+});
+
+	function removefield2(i){
+		var nombre_f2="#f2";
+		var num="";
+		var num_f2=i;
+		num=num_f2.toString();
+		var f2=nombre_f2.concat(num);
+		$(""+f2+"").empty();
+	};
+
+	var i=1;
+	$("#add3").on('click',function(event){
+		$("#table3").append('<tr id="f3'+i+'"><td align="right"></td><td><input type="text" name="past_jobs" id="past_jobs" placeholder="Write your past jobs here" title="Write your past jobs here" required="required" size="50"><input type="button" name="remove3" id=remove3 value="Remove" onclick="removefield3('+i+')"</td></tr>');
+		i++;
+});
+	function removefield3(i){
+		var nombre_f3="#f3";
+		var num="";
+		var num_f3=i;
+		num=num_f3.toString();
+		var f3=nombre_f3.concat(num);
+		$(""+f3+"").empty();
+	};
+</script>
+
