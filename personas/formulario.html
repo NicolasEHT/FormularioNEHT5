@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registro</title>
+</head>
+<body>
+	<a href="PersonasControlador.php?operacion=index">Listar Personas</a><br>
+	<a href="../index.php">Inicio</a><br>
+	<form action="PersonasControlador.php" method="post" name="formulario">
+
+	<table>
+		<tr>
+			<td colspan="2">Registro de Personas:</td>
+		</tr>
+		<tr>
+			<td>Nombres:</td>
+			<td><input type="text" name="first_name" id="first_name" placeholder="Ej: Nicolás Enrique" title="Ingrese sus nombres"></td>
+		</tr>
+		<tr>
+			<td>Apellidos:</td><td><input type="text" name="last_name"  id="last_name" placeholder="Ej: Hernández Torres"title="Ingrese sus apellidos"></td>
+		</tr>
+		<tr>
+			<td>Cédula</td>
+			<td><input type="number" name="dni"  id="dni" placeholder="Ej: 12345678" title="Ingrese su cédula"></td>
+		</tr>
+		<tr>
+			<td>
+				<input type=hidden name="operacion"  value="guardar">
+				<input type="submit" name="enviar" value="Enviar">
+			</td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>

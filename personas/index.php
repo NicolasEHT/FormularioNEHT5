@@ -8,7 +8,7 @@ $data=unserialize($data);
 	<script type="text/javascript">
 		function eliminar(id) {
 			if (confirm("Seguro desea eliminar el registro?")) {
-				window.location="/PersonasControlador.php?operacion=eliminar&id_persona="+id;
+				window.location="PersonasControlador.php?operacion=eliminar&id_persona="+id;
 			}
 		}
 	</script>

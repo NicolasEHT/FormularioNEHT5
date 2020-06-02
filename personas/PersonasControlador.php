@@ -27,6 +27,60 @@ class PersonasControlador
 	}
 
 
+	public function modificar(){
+		extract($_REQUEST); //extrayendo valores de url
+		$db=new clasedb();
+		$conex=$db->conectar(); //conectando con base de datos
+
+		$sqrl="SELECT * FROM datos_personales WHERE id=".$id_persona."";
+		echo $sql;
+		$res=mysqli_query($conex,$sql);
+		$data=mysqli_fetch_array($res);
+
+		header("Location: editar.php?data=".serialize($data));
+	}
+
+	public function actualizar(){
+		extract($_POST);
+		$db=new clasedb();
+		$conex=$db->conectar();
+
+		$sql="SELECT * FROM  datos_personales WHERE dni=".$dni." AND id<>".$id_persona;
+		//echo $sql;
+		$res=mysqli_query($conex,$sql);
+		$cant=mysqli_num_rows($res);
+			if  ($cant>0)  {
+				?>
+					<script type="text/javascript">
+						alert("CEDULA YA REGISTRADA");
+						window.location="PersonasControlador.php?operacion=index";
+					</script>
+					<?php
+				}else{
+					$sql="UPDATE datos_personales SET first_name='".$first_name."',last_name='".$last_name."',dni='".$dni."
+					WHERE id=".$id_persona;
+				//echo $sql;
+				$res=mysqli_query($conex,$sql);
+					if  ($res) {
+						?>
+							<script type="text/javascript">
+								alert("REGISTRO MODIFICADO");
+								window.location="PersonasControlador.php?operacion=index";
+							</script>
+							<?php
+				} else {
+						?>
+							<script type="text/javascript">
+								alert("ERROR AL MODIFICAR EL REGISTRO");
+								window.location="PersonasControlador.php?operacion=index";
+						</script>
+							<?php
+					
+				}
+			}
+
+		}//funcion
+
 	static function controlador($operacion){
 		$persona=new PersonasControlador();
 	switch ($operacion) {
@@ -37,7 +91,7 @@ class PersonasControlador
 			$persona->registrar();
 			break;
 		case 'guardar':
-			$persona->modificar();
+			$persona->guardar();
 			break;
 		case 'modificar':
 			$persona->modificar();
@@ -46,7 +100,7 @@ class PersonasControlador
 			$persona->actualizar();
 			break;
 		case 'eliminar':
-			$persona->eliminar();
+			//$persona->eliminar();
 			break;
 		default:
 			?>
