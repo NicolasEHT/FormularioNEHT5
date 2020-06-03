@@ -7,7 +7,7 @@
 	<ul>
 		<li><a href="formulario.html">Formulario</li>
 		<li><a href="./personas/PersonasControlador.php?operacion=index">Personas</li>
-		<li><a href="#">Modulo 2</li>
+		<li><a href="./personas/mostrar.php">Herencia</li>
 	</ul>
 </body>
 </html>
